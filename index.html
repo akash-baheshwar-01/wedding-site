@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#570D20">
+  <meta name="description" content="शाही हिन्दू विवाह डिजिटल पत्रिका">
+  <title>शुभ विवाह • डिजिटल पत्रिका</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;600;700&family=Tiro+Devanagari+Hindi:ital@0;1&family=Yatra+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="petals" aria-hidden="true"></div>
+
+  <section class="opening" id="opening" aria-label="विवाह पत्रिका का मुखपृष्ठ">
+    <video class="opening-video" id="openingVideo" autoplay muted loop playsinline preload="auto" poster="assets/images/couple.svg" aria-hidden="true">
+      <source src="assets/videos/pre-wedding.mp4" type="video/mp4">
+    </video>
+    <div class="opening-video-overlay" aria-hidden="true"></div>
+    <img class="opening-ganesha" src="assets/images/ganesha-emblem.png" alt="श्री गणेश प्रतीक">
+    <div class="opening-mandala" aria-hidden="true"></div>
+    <div class="bells" aria-hidden="true"><span>ॐ</span><span>ॐ</span></div>
+    <div class="opening-content">
+      <p class="ganesh-mantra">श्री गणेशाय नमः</p>
+      <h1>॥ शुभ विवाह ॥</h1>
+      <p class="opening-subtitle">एक पावन शाही आमंत्रण</p>
+      <button class="open-card" id="openCard" type="button"><span>पत्रिका खोलें</span></button>
+    </div>
+  </section>
+
+  <main id="mainInvitation" class="main-invitation" aria-hidden="true">
+    <div class="app-shell">
+      <section class="hero section" id="home" data-nav="home">
+        <div class="royal-border">
+          <p class="mantra">॥ श्री गणेशाय नमः ॥</p>
+          <div class="lotus" aria-hidden="true">❀</div>
+          <p class="eyebrow">सप्रेम सादर आमंत्रण</p>
+          <p class="invite-copy" data-bind="invitationText"></p>
+          <div class="couple-monogram"><span data-bind="groom.shortName"></span><b>♥</b><span data-bind="bride.shortName"></span></div>
+          <div class="hero-names">
+            <div><small>वर</small><strong data-bind="groom.name"></strong></div>
+            <div class="marriage-ribbons" aria-hidden="true">शुभ<br>विवाह</div>
+            <div><small>वधू</small><strong data-bind="bride.name"></strong></div>
+          </div>
+          <p class="save-date"><span data-bind="eventDateLong"></span> · <span data-bind="venue.cityState"></span></p>
+        </div>
+      </section>
+
+      <section class="section couple-section" id="invitation" data-nav="invitation">
+        <div class="section-heading"><span></span><p>वर-वधू</p><span></span></div>
+        <div class="couple-grid">
+          <article class="profile-card">
+            <div class="portrait portrait-groom"><img data-src="groom.photo" alt="वर की तस्वीर"></div>
+            <small>वर</small><h2 data-bind="groom.name"></h2>
+          </article>
+          <article class="profile-card">  
+            <div class="portrait portrait-bride"><img data-src="bride.photo" alt="वधू की तस्वीर"></div>
+            <small>वधू</small><h2 data-bind="bride.name"></h2>
+          </article>
+        </div>
+        <blockquote data-bind="quote"></blockquote>
+
+        <div class="families">
+          <article class="family-card">
+            <div class="family-title">वर पक्ष</div>
+            <p><b>पिता</b><span data-bind="families.groomFather"></span></p>
+            <p><b>माता</b><span data-bind="families.groomMother"></span></p>
+            <p><b>स्नेहीजन</b><span data-bind="families.groomFamily"></span></p>
+          </article>
+          <article class="family-card">
+            <div class="family-title">वधू पक्ष</div>
+            <p><b>पिता</b><span data-bind="families.brideFather"></span></p>
+            <p><b>माता</b><span data-bind="families.brideMother"></span></p>
+            <p><b>स्नेहीजन</b><span data-bind="families.brideFamily"></span></p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section events-section" id="events" data-nav="events">
+        <div class="section-heading"><span></span><p>मांगलिक कार्यक्रम</p><span></span></div>
+        <div class="countdown-wrap">
+          <p>शुभ विवाह में शेष समय</p>
+          <div class="countdown" aria-live="polite">
+            <div><strong id="days">00</strong><small>दिन</small></div><div><strong id="hours">00</strong><small>घंटे</small></div><div><strong id="minutes">00</strong><small>मिनट</small></div><div><strong id="seconds">00</strong><small>सेकंड</small></div>
+          </div>
+          <p class="countdown-message" id="countdownMessage"></p>
+        </div>
+        <div class="events-list" id="eventsList"></div>
+      </section>
+
+      <section class="section venue-section" id="venue" data-nav="venue">
+        <div class="section-heading"><span></span><p>विवाह स्थल</p><span></span></div>
+        <div class="venue-card">
+          <div class="venue-emblem" aria-hidden="true">♢</div>
+          <h2 data-bind="venue.name"></h2>
+          <p data-bind="venue.address"></p>
+          <p data-bind="venue.cityState"></p>
+          <a class="gold-button map-button" id="mapButton" target="_blank" rel="noopener">📍 रास्ता देखें</a>
+        </div>
+        <div class="action-grid">
+          <button class="action-button" id="shareButton" type="button">WhatsApp आमंत्रण</button>
+          <button class="action-button" id="copyButton" type="button">लिंक कॉपी करें</button>
+          <button class="action-button" id="rsvpButton" type="button">RSVP पुष्ट करें</button>
+          <button class="action-button" id="calendarButton" type="button">कैलेंडर में जोड़ें</button>
+        </div>
+      </section>
+
+      <footer>
+        <div class="footer-flower">❀</div>
+        <p>आपके मंगल आशीर्वाद की प्रतीक्षा में</p>
+        <strong data-bind="family.footer"></strong>
+        <small>॥ मंगल भवन अमंगल हारी ॥</small>
+      </footer>
+    </div>
+  </main>
+
+  <nav class="bottom-nav" id="bottomNav" aria-label="मुख्य नेविगेशन">
+    <button class="nav-item active" data-target="home" type="button"><span>⌂</span><small>गृह</small></button>
+    <button class="nav-item" data-target="invitation" type="button"><span>♡</span><small>निमंत्रण</small></button>
+    <button class="nav-item" data-target="events" type="button"><span>✦</span><small>कार्यक्रम</small></button>
+    <button class="nav-item" data-target="venue" type="button"><span>⌖</span><small>स्थान</small></button>
+  </nav>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="तस्वीर दर्शक">
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="बंद करें">×</button>
+    <button class="lightbox-nav prev" id="lightboxPrev" type="button" aria-label="पिछली तस्वीर">‹</button>
+    <img id="lightboxImage" alt="विवाह स्मृति">
+    <button class="lightbox-nav next" id="lightboxNext" type="button" aria-label="अगली तस्वीर">›</button>
+    <p id="lightboxCaption"></p>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
